@@ -9,8 +9,7 @@
       out in the same tree and use relative links so that they'll work offline,
      --> 
     <link rel="stylesheet" href="spec.css">
-    <script src='../../respec-w3c-common.js' class='remove'></script> 
-    <script src='../../web-payments-common.js' class='remove'></script> 
+    <script src='https://www.w3.org/Tools/respec/respec-w3c-common' async class='remove'></script>
     <script type="text/javascript" class="remove">
       var respecConfig = {
           // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
@@ -44,13 +43,15 @@
           // This is optional, uncomment if you have authors as well as editors.
           // only "name" is required. Same format as editors.
  
-          //authors:  [
-          //    { name: "Your Name", url: "http://example.org/",
-          //      company: "Your Company", companyURL: "http://example.com/" },
-          //],
+          authors: [
+              { name: "Manu Sporny", url: "https://manu.sporny.org/",
+                company: "Digital Bazaar, Inc.", companyURL: "http://digitalbazaar.com/" },
+              { name: "Dave Longley", url: "https://github.com/dlongley",
+                company: "Digital Bazaar, Inc.", companyURL: "http://digitalbazaar.com/" },
+          ],
 
           // extend the bibliography entries
-          localBiblio: webpayments.localBiblio,
+          //localBiblio: ,
           
           // name of the WG
           wg:           "W3C Web Payments Community Group",
@@ -68,22 +69,11 @@
           // Team Contact.
           wgPatentURI:  "",
           maxTocLevel: 4,
-          preProcess: [ webpayments.preProcess ] /*,
+          preProcess: [ ] /*,
           alternateFormats: [ {uri: "diff-20111214.html", label: "diff to previous version"} ],
           */
       };
     </script> 
-    <script type="text/javascript" class="remove">
-      var oldonload = window.onload;
-      window.onload = function() {
-        if (oldonload) oldonload();
-        prettyPrint();
-      };
-    </script>
-<style type="text/css">
-  .diff { font-weight:bold; color:#0a3; }
-  table, thead, tr, td { padding: 5px; border-width: 1px; border-spacing: 0px; border-style: solid; border-collapse: collapse;}
-</style>
 </head>
 
 <body>
