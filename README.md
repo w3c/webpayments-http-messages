@@ -1,5 +1,11 @@
+# Web Payments Core Messages 1.0
 
-# Specification 'webpayments-core-messages'
+This document specifies the core Web Payments messages that are used to
+initiate and acknowledge a payment request. The messages are typically passed
+between the software ecosystem that inititates, executes, and finalizes
+Web Payments.
 
-This is the repository for webpayments-core-messages. You're welcome to contribute! Let's make the Web rock our socks
-off!
+The live version of this specification can be found here:
+
+http://w3c.github.io/webpayments-core-messages/
+
