@@ -414,6 +414,14 @@ accept as payment.
   }
 };
       </pre>
+
+      <p class="issue" data-number="3" title="Validation of values that may contain more than one item">
+Whether or not values that may contain one or more items, such as
+<code>acceptablePayment</code> above should throw an error during validation
+if they are not an array is under discussion. That is, should we say that
+values that could contain more than one item MUST always be wrapped in an array?
+      </p>
+
     </section>
 
     <section>
