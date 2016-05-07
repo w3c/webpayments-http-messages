@@ -87,9 +87,45 @@ var respecConfig = {
     // Team Contact.
     wgPatentURI:  "https://www.w3.org/2004/01/pp-impl/83744/status",
     maxTocLevel: 4,
-    preProcess: [ ] /*,
+    preProcess: [ ], /*,
     alternateFormats: [ {uri: "diff-20111214.html", label: "diff to previous version"} ],
     */
+    localBiblio:  {
+      "JSON-SCHEMA-CORE": {
+        title: "JSON Schema: Core Definitions and Terminology",
+        href: "http://tools.ietf.org/html/draft-zyp-json-schema-04",
+        authors: [
+          "F. Galiegue",
+          "K. Zyp",
+          "G. Court"
+        ],
+        status: "Expired informational",
+        publisher: "IETF"
+      },
+      "JSON-SCHEMA-VALIDATION": {
+        title: "JSON Schema: Interactive and Non-Interactive Validation",
+        href: "http://tools.ietf.org/html/draft-fge-json-schema-validation-00",
+        authors: [
+          "F. Galiegue",
+          "K. Zyp",
+          "G. Court"
+        ],
+        status: "Expired informational",
+        publisher: "IETF"
+      },
+      "PAYMENT-REQUEST-API": {
+        title: "Payment Request API",
+        href: "https://www.w3.org/TR/payment-request/",
+        authors: [
+          "Adrian Bateman",
+          "Zach Koch",
+          "Richard Barnes",
+          "Roy McElmurry"
+        ],
+        status: "FPWD",
+        publisher: "W3C"
+      }
+    }
 
 };
     </script>
@@ -187,7 +223,8 @@ The message text itself.
 Note that there are no formal data value constraints expressed in the message
 definition in the data model. Even though the data model is fairly abstract,
 constraints can still be placed on the values in each concrete syntax (e.g.,
-JSON Schema in most JSON environments). These constraints can be found in the
+JSON Schema [[JSON-SCHEMA-CORE]] [[JSON-SCHEMA-VALIDATION]]
+in most JSON environments). These constraints can be found in the
 sections titled
 <a href="#expressing-messages-as-webidl">Expressing Messages as WebIDL</a>,
 <a href="#expressing-messages-as-json">Expressing Messages as JSON</a>, and
