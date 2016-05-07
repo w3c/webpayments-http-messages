@@ -137,6 +137,87 @@ how to interpret those messages in a variety of operating environments.
         structure of the core messages.</li>
       <li>Software developers who want to implement Web Payments systems.</li>
     </ul>
+
+    <section>
+      <h3>Data Model Approach</h3>
+
+      <p>
+When designing software systems, the data model used to express
+the components of the system is important. Data models tend to vary in their
+formalism. Some data models are more abstract where data values are not typed
+and only vaguely defined as to what their allowable values may be.
+Other data models are more concrete, with strongly defined value types and
+ranges.
+      </p>
+
+      <p>
+The data model used to document the messages in this specification tends
+toward being more abstract. This is done to aid readability and ensure that
+the data model can be applied in a variety of programming environments. There
+is also a mechanism that we use in this specification that enables more
+formalism when it comes to data types and ranges. This is done to ensure that
+programmers can re-use specific data validation tooling if it is available to
+them.
+      </p>
+
+      <p>
+In an attempt to make the description of this approach easier to understand,
+note the following simple example of a <code>HelloWorld</code>
+message definition:
+      </p>
+
+    <h5 style="font-size: 1.2em">HelloWorld</h5>
+
+      <p>
+A message that is used to greet the world.
+      </p>
+
+          <dl>
+            <dt><code>title</code></dt>
+            <dd>
+A short human-readable title for the message.
+            </dd>
+            <dt><code>message</code></dt>
+            <dd>
+The message text itself.
+            </dd>
+          </dl>
+
+      <p>
+Note that there are no formal data value constraints expressed in the message
+definition in the data model. Even though the data model is fairly abstract,
+constraints can still be placed on the values in each concrete syntax (e.g.,
+JSON Schema in most JSON environments). These constraints can be found in the
+sections titled
+<a href="#expressing-messages-as-webidl">Expressing Messages as WebIDL</a>,
+<a href="#expressing-messages-as-json">Expressing Messages as JSON</a>, and
+<a href="#expressing-messages-as-json-ld">Expressing Messages as JSON-LD</a>.
+      </p>
+
+      <p>
+For example, if a developer wanted to express the <code>HelloWorld</code>
+message definition above in JSON, the following JSON Schema could be used to
+validate such a message:
+      </p>
+
+      <pre class="highlight">
+{
+  "title": "HelloWorld Message JSON Schema",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  },
+  "required": ["title", "message"]
+}
+      </pre>
+
+    </section>
+
   </section>
   <section class="normative">
     <h3>Terminology</h3>
@@ -157,96 +238,6 @@ updated to match the
 
 <section>
   <h2>The Data Model</h2>
-
-  <p class="issue">
-The data model used for the messages in this specification is intended to be
-easily readable and understood by non-technologists. Therefore, it is neither
-rigorous nor formal. Some of the more classicly trained software designers
-may find this disconcerting as types and ranges are not strictly locked down
-at the data model layer. Others will find the need for an abstract data model
-unnecessary, preferring to express the messages in a more concrete syntax.
-Some may want to use UML, others may want RDF, and others may prefer JSON's
-data model. In short, the way the data model is used and expressed in this
-document is up for discussion. The only requirement is that we use something
-that is easily understood by most readers and that's flexible enough to work
-with a variety of programming environments while empowering developers to
-use validation tooling (like JSON Schema) if the facility is available to them.
-  </p>
-
-  <p>
-When designing software systems, the data model used to express
-the components of the system is important. Data models tend to vary in their
-formalism. Some data models are more abstract where data values are not typed
-and only vaguely defined as to what their allowable values may be.
-Other data models are more concrete, with strongly defined value types and
-ranges.
-  </p>
-
-  <p>
-The data model used to document the messages in this specification tends
-toward being more abstract. This is done to aid readability and ensure that
-the data model can be applied in a variety of programming environments. There
-is also a mechanism that we use in this specification that enables more
-formalism when it comes to data types and ranges. This is done to ensure that
-programmers can re-use specific data validation tooling if it is available to
-them.
-  </p>
-
-  <p>
-In an attempt to make the description of this approach easier to understand,
-note the following simple example of a <code>HelloWorld</code>
-message definition:
-  </p>
-
-<h5 style="font-size: 1.2em">HelloWorld</h5>
-
-  <p>
-A message that is used to greet the world.
-  </p>
-
-      <dl>
-        <dt><code>title</code></dt>
-        <dd>
-A short human-readable title for the message.
-        </dd>
-        <dt><code>message</code></dt>
-        <dd>
-The message text itself.
-        </dd>
-      </dl>
-
-  <p>
-Note that there are no formal data value constraints expressed in the message
-definition in the data model. Even though the data model is fairly abstract,
-constraints can still be placed on the values in each concrete syntax (e.g.,
-JSON Schema in most JSON environments). These constraints can be found in the
-sections titled
-<a href="#expressing-messages-as-webidl">Expressing Messages as WebIDL</a>,
-<a href="#expressing-messages-as-json">Expressing Messages as JSON</a>, and
-<a href="#expressing-messages-as-json-ld">Expressing Messages as JSON-LD</a>.
-  </p>
-
-  <p>
-For example, if a developer wanted to express the <code>HelloWorld</code>
-message definition above in JSON, the following JSON Schema could be used to
-validate such a message:
-  </p>
-
-  <pre class="highlight">
-{
-  "title": "HelloWorld Message JSON Schema",
-  "type": "object",
-  "properties": {
-    "title": {
-      "type": "string"
-    },
-    "message": {
-      "type": "string"
-    }
-  },
-  "required": ["title", "message"]
-}
-  </pre>
 
   <p class="issue" data-number="1" title="How should we test Web Payments messages?">
 It has been suggested that for the purposes of testing, we should have at least
