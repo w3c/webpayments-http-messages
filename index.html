@@ -289,7 +289,127 @@ one normative representation of messages in JSON Schema format.
 </section>
 
 <section>
-  <h2>Core Message Components</h2>
+  <h2>Core Messages</h2>
+
+    <section>
+      <h3><dfn>PaymentInstruction</dfn></h3>
+
+      <p>
+A <a><code>PaymentInstruction</code></a> expresses a payment that is requested
+by a <a>payee</a>.
+      </p>
+
+
+  <figure>
+    <img style="margin: auto; display: block;" width="50%" src="payment-instruction.svg">
+    <figcaption style="text-align: center;">
+- The contents of a PaymentInstruction message.
+    </figcaption>
+  </figure>
+
+      <dl>
+        <dt><code>type</code></dt>
+        <dd>
+A set of one or more type identifiers associated with the object, typically
+set to <code>"PaymentRequest"</code>.
+
+<div class="issue">The set of available types MAY be extended
+in the future to, for example, add things like
+<code>"SubscriptionRequest"</code> to identify payment requests that may
+have some recurring quality to them.
+</div>
+        </dd>
+        <dt><code>description</code></dt>
+        <dd>
+A human-readable description of the reason the payment request was initiated.
+This text MAY be displayed to the <a>payer</a> in a payment interface.
+For example, <code>"Payment for widgets from Acme Anvil Emporium"</code>.
+        </dd>
+        <dt><code>paymentTerms</code></dt>
+        <dd>
+One or more <a>PaymentTerms</a> that the <a>payee</a> will
+accept as payment.
+        </dd>
+      </dl>
+      <pre class="example highlight"
+        title="An example of a payment request expressed in JSON">
+{
+  "type": "PaymentRequest",
+  "description": "Payment to ExampleMerch for widgets",
+  "paymentTerms": {
+    "paymentMethod": "VisaLegacy",
+    "paymentAmount": {
+      "amount": "4.35",
+      "currency": "USD"
+    }
+  }
+};
+      </pre>
+
+      <p class="issue" data-number="3" title="Validation of values that may contain more than one item">
+Whether or not values that may contain one or more items, such as
+<code>paymentTerms</code> above should throw an error during validation
+if they are not an array is under discussion. That is, should we say that
+values that could contain more than one item MUST always be wrapped in an array?
+      </p>
+
+    </section>
+
+    <section>
+      <h3><dfn>PaymentResponse</dfn></h3>
+
+      <p>
+A <a><code>PaymentResponse</code></a> expresses the result of processing
+a payment request.
+      </p>
+      <dl>
+        <dt><code>type</code></dt>
+        <dd>
+An type identifier associated with the object, typically set to
+<code>"PaymentResponse"</code>.
+
+<div class="issue">
+The set of available types MAY be extended in the future to add things
+like <code>Receipt</code> to identify acknowledgements that contain
+receipt information.
+</div>
+        </dd>
+        <dt><code>description</code></dt>
+        <dd>
+Human readable text that will be used to identify what the payment was for.
+This text MAY be displayed to the <a>payer</a>. For example,
+<code>"Payment to ExampleMerch for widgets"</code>.
+        </dd>
+        <dt><code>payment</code></dt>
+        <dd>
+Information such as the payment method used and the payment amount. Payment
+method specific information, such as the status of the payment, MAY also be
+included. The presence and meaning of this extra information is dependent on
+the payment method. The payment information MAY be used by the <a>payee</a> or
+their associated <a>payment service provider</a> to, for example, finalize a
+payment or display information to the <a>payer</a>.
+        </dd>
+      </dl>
+
+      <pre class="example highlight"
+        title="An example of a payment response">
+{
+  "type": "PaymentResponse",
+  "description": "Payment to ExampleMerch for widgets",
+  "payment": {
+    "paymentMethod": "VisaLegacy",
+    "paymentAmount": {
+      "amount": "4.35",
+      "currency": "USD"
+    },
+    ... // payment method specific response details here
+  }
+};
+      </pre>
+    </section>
+
+<section>
+  <h2>Supporting Datatypes</h2>
 
     <section>
       <h3><dfn>FinancialAmount</dfn></h3>
@@ -364,116 +484,6 @@ different currencies.
     </section>
   </section>
 
-<section>
-  <h2>Core Messages</h2>
-
-    <section>
-      <h3><dfn>PaymentInstruction</dfn></h3>
-
-      <p>
-A <a><code>PaymentInstruction</code></a> expresses a payment that is requested
-by a <a>payee</a>.
-      </p>
-      <dl>
-        <dt><code>type</code></dt>
-        <dd>
-A set of one or more type identifiers associated with the object, typically
-set to <code>"PaymentRequest"</code>.
-
-<div class="issue">The set of available types MAY be extended
-in the future to, for example, add things like
-<code>"SubscriptionRequest"</code> to identify payment requests that may
-have some recurring quality to them.
-</div>
-        </dd>
-        <dt><code>description</code></dt>
-        <dd>
-A human-readable description of the reason the payment request was initiated.
-This text MAY be displayed to the <a>payer</a> in a payment interface.
-For example, <code>"Payment for widgets from Acme Anvil Emporium"</code>.
-        </dd>
-        <dt><code>paymentTerms</code></dt>
-        <dd>
-One or more <a>PaymentTerm</a>s that the <a>payee</a> will
-accept as payment.
-        </dd>
-      </dl>
-      <pre class="example highlight"
-        title="An example of a payment request expressed in JSON">
-{
-  "type": "PaymentRequest",
-  "description": "Payment to ExampleMerch for widgets",
-  "paymentTerms": {
-    "paymentMethod": "VisaLegacy",
-    "paymentAmount": {
-      "amount": "4.35",
-      "currency": "USD"
-    }
-  }
-};
-      </pre>
-
-      <p class="issue" data-number="3" title="Validation of values that may contain more than one item">
-Whether or not values that may contain one or more items, such as
-<code>acceptablePayment</code> above should throw an error during validation
-if they are not an array is under discussion. That is, should we say that
-values that could contain more than one item MUST always be wrapped in an array?
-      </p>
-
-    </section>
-
-    <section>
-      <h3><dfn>PaymentResponse</dfn></h3>
-
-      <p>
-A <a><code>PaymentResponse</code></a> expresses the result of processing
-a payment request.
-      </p>
-      <dl>
-        <dt><code>type</code></dt>
-        <dd>
-An type identifier associated with the object, typically set to
-<code>"PaymentResponse"</code>.
-
-<div class="issue">
-The set of available types MAY be extended in the future to add things
-like <code>Receipt</code> to identify acknowledgements that contain
-receipt information.
-</div>
-        </dd>
-        <dt><code>description</code></dt>
-        <dd>
-Human readable text that will be used to identify what the payment was for.
-This text MAY be displayed to the <a>payer</a>. For example,
-<code>"Payment to ExampleMerch for widgets"</code>.
-        </dd>
-        <dt><code>payment</code></dt>
-        <dd>
-Information such as the payment method used and the payment amount. Payment
-method specific information, such as the status of the payment, MAY also be
-included. The presence and meaning of this extra information is dependent on
-the payment method. The payment information MAY be used by the <a>payee</a> or
-their associated <a>payment service provider</a> to, for example, finalize a
-payment or display information to the <a>payer</a>.
-        </dd>
-      </dl>
-
-      <pre class="example highlight"
-        title="An example of a payment response">
-{
-  "type": "PaymentResponse",
-  "description": "Payment to ExampleMerch for widgets",
-  "payment": {
-    "paymentMethod": "VisaLegacy",
-    "paymentAmount": {
-      "amount": "4.35",
-      "currency": "USD"
-    },
-    ... // payment method specific response details here
-  }
-};
-      </pre>
-    </section>
 </section>
 
   <section>
