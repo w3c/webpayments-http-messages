@@ -328,11 +328,11 @@ The string should match the regular expression
     </section>
 
     <section>
-      <h3><dfn>AcceptablePaymentMethod</dfn></h3>
+      <h3><dfn>PaymentTerms</dfn></h3>
 
       <p>
-An <a><code>AcceptablePaymentMethod</code></a> expresses the terms under
-which a payment may be fulfilled.
+<a><code>PaymentTerms</code></a> express the type of payment method,
+amount, and other information under which a transaction may be fulfilled.
       </p>
       <dl>
         <dt><code>paymentMethod</code></dt>
@@ -392,9 +392,9 @@ A human-readable description of the reason the payment request was initiated.
 This text MAY be displayed to the <a>payer</a> in a payment interface.
 For example, <code>"Payment for widgets from Acme Anvil Emporium"</code>.
         </dd>
-        <dt><code>acceptablePayment</code></dt>
+        <dt><code>paymentTerms</code></dt>
         <dd>
-One or more <a>AcceptablePaymentMethod</a>s that the <a>payee</a> will
+One or more <a>PaymentTerm</a>s that the <a>payee</a> will
 accept as payment.
         </dd>
       </dl>
@@ -403,7 +403,7 @@ accept as payment.
 {
   "type": "PaymentRequest",
   "description": "Payment to ExampleMerch for widgets",
-  "acceptablePayment": {
+  "paymentTerms": {
     "paymentMethod": "VisaLegacy",
     "paymentAmount": {
       "amount": "4.35",
