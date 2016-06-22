@@ -9,8 +9,8 @@
       out in the same tree and use relative links so that they'll work offline,
      -->
     <link rel="stylesheet" href="spec.css">
-    <script src='//www.w3.org/Tools/respec/respec-w3c-common' async class='remove'></script>
-    <script src='utils.js' async class='remove'></script>
+    <script src='//www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script>
+    <script src='utils.js' class='remove'></script>
     <script type="text/javascript" class="remove">
 var respecConfig = {
     // specification status (e.g., WD, LCWD, NOTE, etc.). If in doubt use ED.
@@ -301,7 +301,7 @@ by a <a>payee</a>.
 
 
   <figure>
-    <img style="margin: auto; display: block;" width="50%" src="payment-instruction.svg">
+    <img alt="payment instruction contents" style="margin: auto; display: block;" width="50%" src="payment-instruction.svg">
     <figcaption style="text-align: center;">
 - The contents of a PaymentInstruction message.
     </figcaption>
@@ -498,8 +498,10 @@ in this specification to their WebIDL definitions in other specifications.
 
     <table class="simple">
       <thead>
+        <tr>
         <th>Message</th>
         <th>WebIDL Definition</th>
+        </tr>
       </thead>
       <tbody>
         <tr>
@@ -527,8 +529,10 @@ in this specification to their JSON Schema definitions.
 
     <table class="simple">
       <thead>
+          <tr>
         <th>Message</th>
         <th>JSON Schema</th>
+    </tr>
       </thead>
       <tbody>
         <tr>
@@ -572,9 +576,11 @@ JSON-LD Frames and JSON Schema definitions.
 
     <table class="simple">
       <thead>
+          <tr>
         <th>Message</th>
         <th>JSON-LD Frame</th>
         <th>JSON Schema</th>
+    </tr>
       </thead>
       <tbody>
         <tr>
@@ -612,7 +618,6 @@ set of methods will this specification employ.
     </section>
   </section>
 
-</section>
 
 <section class="appendix informative">
   <h2>Acknowledgements</h2>
