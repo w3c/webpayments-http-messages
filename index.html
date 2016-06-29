@@ -330,14 +330,38 @@ For example, <code>"Payment for widgets from Acme Anvil Emporium"</code>.
 One or more <a>PaymentTerms</a> that the <a>payee</a> will
 accept as payment.
         </dd>
+        <dt><code>paymentDetails</code></dt>
+        <dd>
+An optional set of information concerning the details of why the payment
+was requested, such as a list of items being purchased.
+        </dd>
+        <dt><code>paymentOptions</code></dt>
+        <dd>
+An optional set of requests that are intended for the payment mediator or the
+payment application. For example, a <a>payee</a> may request that a payment
+mediator return the shipping address and the email address selected by 
+the <a>payer</a>.
+        </dd>
       </dl>
+
+<p class="issue">
+The format for the <code>paymentDetails</code> and <code>paymentOptions</code> 
+objects are still being actively discussed. They are expected to take the
+form of the 
+<a href="https://w3c.github.io/browser-payment-api/#paymentdetails-dictionary">PaymentDetails</a>
+and the 
+<a href="https://w3c.github.io/browser-payment-api/#paymentoptions-dictionary">PaymentOptions</a>
+objects in the 
+<a href="https://w3c.github.io/browser-payment-api/">Web Payments Browser API</a>.
+</p>
+
       <pre class="example highlight"
         title="An example of a payment request expressed in JSON">
 {
   "type": "PaymentRequest",
   "description": "Payment to ExampleMerch for widgets",
   "paymentTerms": {
-    "paymentMethod": "VisaLegacy",
+    "paymentMethod": "https://example.org/cards#VisaLegacy",
     "paymentAmount": {
       "amount": "4.35",
       "currency": "USD"
@@ -397,7 +421,7 @@ payment or display information to the <a>payer</a>.
   "type": "PaymentResponse",
   "description": "Payment to ExampleMerch for widgets",
   "payment": {
-    "paymentMethod": "VisaLegacy",
+    "paymentMethod": "https://example.org/cards#VisaLegacy",
     "paymentAmount": {
       "amount": "4.35",
       "currency": "USD"
@@ -459,7 +483,7 @@ amount, and other information under which a transaction may be fulfilled.
         <dd>
 One or more payment method identifiers (as defined in
 an associated payment method specification). For example,
-<code>"VisaLegacy"</code> or
+<code>"https://example.org/cards#VisaLegacy"</code> or
 <code>"https://newnetwork.example.com/methods/SuperCard"</code>
 
         </dd>
@@ -472,9 +496,12 @@ different currencies.
       </dl>
 
       <pre class="example highlight"
-        title="Payment for $4.35 USD may be fulfilled using non-tokenized Visa and Mastercard expressed as JSON">
+        title="Payment for $4.35 USD may be fulfilled using non-tokenized Visa and MasterCard expressed as JSON">
 {
-  "paymentMethod": ["VisaLegacy", "MasterCardLegacy"],
+  "paymentMethod": [
+    "https://example.org/cards#VisaLegacy", 
+    "https://example.org/cards#MasterCardLegacy"
+  ],
   "paymentAmount": {
     "amount": "4.35",
     "currency": "USD"
@@ -506,7 +533,7 @@ in this specification to their WebIDL definitions in other specifications.
       <tbody>
         <tr>
           <td><a>PaymentRequest</a></td>
-          <td>[[PAYMENT-REQUEST-API]] <a href="https://w3c.github.io/browser-payment-api/specs/paymentrequest.html#paymentrequest-interface">Section 4: Payment Response</a></td>
+          <td>[[PAYMENT-REQUEST-API]] <a href="https://w3c.github.io/browser-payment-api/specs/paymentrequest.html#paymentrequest-interface">Section 4: Payment Request</a></td>
         </tr>
         <tr>
           <td><a>PaymentResponse</a></td>
