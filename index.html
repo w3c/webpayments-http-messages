@@ -292,18 +292,18 @@ one normative representation of messages in JSON Schema format.
   <h2>Core Messages</h2>
 
     <section>
-      <h3><dfn>PaymentInstruction</dfn></h3>
+      <h3><dfn>PaymentRequest</dfn></h3>
 
       <p>
-A <a><code>PaymentInstruction</code></a> expresses a payment that is requested
+A <a><code>PaymentRequest</code></a> expresses a payment that is requested
 by a <a>payee</a>.
       </p>
 
 
   <figure>
-    <img alt="payment instruction contents" style="margin: auto; display: block;" width="50%" src="payment-instruction.svg">
+    <img alt="payment request contents" style="margin: auto; display: block;" width="50%" src="payment-request.svg">
     <figcaption style="text-align: center;">
-- The contents of a PaymentInstruction message.
+- The contents of a PaymentRequest message.
     </figcaption>
   </figure>
 
@@ -505,7 +505,7 @@ in this specification to their WebIDL definitions in other specifications.
       </thead>
       <tbody>
         <tr>
-          <td><a>PaymentInstruction</a></td>
+          <td><a>PaymentRequest</a></td>
           <td>[[PAYMENT-REQUEST-API]] <a href="https://w3c.github.io/browser-payment-api/specs/paymentrequest.html#paymentrequest-interface">Section 4: Payment Response</a></td>
         </tr>
         <tr>
@@ -536,8 +536,8 @@ in this specification to their JSON Schema definitions.
       </thead>
       <tbody>
         <tr>
-          <td><a>PaymentInstruction</a></td>
-          <td><a href="schemas/PaymentInstruction.json">PaymentInstruction.json</a></td>
+          <td><a>PaymentRequest</a></td>
+          <td><a href="schemas/PaymentRequest.json">PaymentRequest.json</a></td>
         </tr>
         <tr>
           <td><a>PaymentResponse</a></td>
@@ -584,9 +584,9 @@ JSON-LD Frames and JSON Schema definitions.
       </thead>
       <tbody>
         <tr>
-          <td><a>PaymentInstruction</a></td>
-          <td><a href="frames/PaymentInstruction-frame.jsonld">PaymentInstruction-frame.jsonld</a></td>
-          <td><a href="schemas/PaymentInstruction.json">PaymentInstruction.json</a></td>
+          <td><a>PaymentRequest</a></td>
+          <td><a href="frames/PaymentRequest-frame.jsonld">PaymentRequest-frame.jsonld</a></td>
+          <td><a href="schemas/PaymentRequest.json">PaymentRequest.json</a></td>
         </tr>
         <tr>
           <td><a>PaymentResponse</a></td>
