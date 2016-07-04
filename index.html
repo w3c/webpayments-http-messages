@@ -339,19 +339,19 @@ was requested, such as a list of items being purchased.
         <dd>
 An optional set of requests that are intended for the payment mediator or the
 payment application. For example, a <a>payee</a> may request that a payment
-mediator return the shipping address and the email address selected by 
+mediator return the shipping address and the email address selected by
 the <a>payer</a>.
         </dd>
       </dl>
 
 <p class="issue">
-The format for the <code>paymentDetails</code> and <code>paymentOptions</code> 
+The format for the <code>paymentDetails</code> and <code>paymentOptions</code>
 objects are still being actively discussed. They are expected to take the
-form of the 
+form of the
 <a href="https://w3c.github.io/browser-payment-api/#paymentdetails-dictionary">PaymentDetails</a>
-and the 
+and the
 <a href="https://w3c.github.io/browser-payment-api/#paymentoptions-dictionary">PaymentOptions</a>
-objects in the 
+objects in the
 <a href="https://w3c.github.io/browser-payment-api/">Web Payments Browser API</a>.
 </p>
 
@@ -386,6 +386,14 @@ values that could contain more than one item MUST always be wrapped in an array?
 A <a><code>PaymentResponse</code></a> expresses the result of processing
 a payment request.
       </p>
+
+  <figure>
+    <img alt="payment response contents" style="margin: auto; display: block;" width="50%" src="payment-response.svg">
+    <figcaption style="text-align: center;">
+- The contents of a PaymentResponse message.
+    </figcaption>
+  </figure>
+
       <dl>
         <dt><code>type</code></dt>
         <dd>
@@ -404,7 +412,7 @@ Human readable text that will be used to identify what the payment was for.
 This text MAY be displayed to the <a>payer</a>. For example,
 <code>"Payment to ExampleMerch for widgets"</code>.
         </dd>
-        <dt><code>payment</code></dt>
+        <dt><code>paymentTerms</code></dt>
         <dd>
 Information such as the payment method used and the payment amount. Payment
 method specific information, such as the status of the payment, MAY also be
@@ -412,6 +420,11 @@ included. The presence and meaning of this extra information is dependent on
 the payment method. The payment information MAY be used by the <a>payee</a> or
 their associated <a>payment service provider</a> to, for example, finalize a
 payment or display information to the <a>payer</a>.
+        </dd>
+        <dt><code>paymentOptions</code></dt>
+        <dd>
+Any payment options that were requested by the payee, such as email address,
+phone number, or billing address.
         </dd>
       </dl>
 
@@ -427,6 +440,9 @@ payment or display information to the <a>payer</a>.
       "currency": "USD"
     },
     ... // payment method specific response details here
+  },
+  "paymentOptions": {
+    "email": "jdoe@example.org"
   }
 };
       </pre>
@@ -499,7 +515,7 @@ different currencies.
         title="Payment for $4.35 USD may be fulfilled using non-tokenized Visa and MasterCard expressed as JSON">
 {
   "paymentMethod": [
-    "https://example.org/cards#VisaLegacy", 
+    "https://example.org/cards#VisaLegacy",
     "https://example.org/cards#MasterCardLegacy"
   ],
   "paymentAmount": {
