@@ -7,5 +7,4 @@ Web Payments.
 
 The live version of this specification can be found here:
 
-http://w3c.github.io/webpayments-core-messages/
-
+http://w3c.github.io/webpayments-http-messages/
