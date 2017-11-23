@@ -1,35 +1,36 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
-  "id": "https://www.w3.org/Payments/WG/PaymentRequest",
+  "id": "https://www.w3.org/Payments/WG/schemas/PaymentRequest",
+  "title": "Payment Request",
   "type": "object",
   "properties": {
     "type": {
-      "id": "https://www.w3.org/Payments/WG/PaymentRequest/type",
+      "id": "https://www.w3.org/Payments/WG/schemas/PaymentRequest/type",
       "type": "string"
     },
     "description": {
-      "id": "https://www.w3.org/Payments/WG/PaymentRequest/description",
+      "id": "https://www.w3.org/Payments/WG/schemas/PaymentRequest/description",
       "type": "string"
     },
-    "acceptablePayment": {
-      "id": "https://www.w3.org/Payments/WG/PaymentRequest/acceptablePayment",
+    "paymentTerms": {
+      "id": "https://www.w3.org/Payments/WG/schemas/PaymentRequest/paymentTerms",
       "type": "object",
       "properties": {
         "paymentMethod": {
-          "id": "https://www.w3.org/Payments/WG/PaymentRequest/acceptablePayment/paymentMethod",
+          "id": "https://www.w3.org/Payments/WG/schemas/PaymentRequest/paymentTerms/paymentMethod",
           "type": "string"
         },
         "paymentAmount": {
-          "id": "https://www.w3.org/Payments/WG/PaymentRequest/acceptablePayment/paymentAmount",
+          "id": "https://www.w3.org/Payments/WG/schemas/PaymentRequest/paymentTerms/paymentAmount",
           "type": "object",
           "properties": {
             "amount": {
-              "id": "https://www.w3.org/Payments/WG/PaymentRequest/acceptablePayment/paymentAmount/amount",
+              "id": "https://www.w3.org/Payments/WG/schemas/PaymentRequest/paymentTerms/paymentAmount/amount",
               "type": "string",
               "pattern": "^-?[0-9]+(\.[0-9]+)?$"
             },
             "currency": {
-              "id": "https://www.w3.org/Payments/WG/PaymentRequest/acceptablePayment/paymentAmount/currency",
+              "id": "https://www.w3.org/Payments/WG/schemas/PaymentRequest/paymentTerms/paymentAmount/currency",
               "type": "string"
             }
           }
@@ -37,5 +38,5 @@
       }
     }
   },
-  "required": [ "acceptablePayment" ]
+  "required": [ "paymentTerms" ]
 }
