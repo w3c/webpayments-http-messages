@@ -2,4 +2,5 @@
     "group":      ["83744"]
 ,   "contacts":   ["ianbjacobs"]
 ,   "shortName":  "webpayments-core-messages"
-}
+,   "repo-type":  "others"
+ }
